@@ -24,6 +24,7 @@ import { AuthGuard } from './providers/auth.guard';
 import { AuthService } from './providers/auth.service';
 import { PublishedComponent } from './published/published.component';
 import { SelledComponent } from './selled/selled.component';
+import { AComponent } from './a/a.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SelledComponent } from './selled/selled.component';
     AuthenticatedComponent,
     SellComponent,
     PublishedComponent,
-    SelledComponent
+    SelledComponent,
+    AComponent
   ],
   
   exports: [RouterModule],
