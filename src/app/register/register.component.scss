@@ -1,0 +1,74 @@
+:host{
+    flex: 1;
+    .title{
+        border-radius: 30px;
+        background: #ffffff;
+        width: 50%;
+        margin: 30px auto;
+        padding: 30px 30px; 
+        .title-si{
+            float: left;
+        }
+        .choise{
+            text-align: center;
+            a:hover{
+                cursor: pointer;
+            }
+        }
+        .log-in{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            .btn{
+                padding: 0;
+                button{
+                    width: 350px;
+                    background: #5496ff;
+                    border-radius: 5px;
+                    a{
+                        text-decoration: none;
+                        color: #ffffff;
+                        span{
+                            padding: 6px;
+                            float: left;
+                            font-size: 15px;
+                            font-weight: bold;
+                            border-right: 1px solid #5a5151;
+                        }
+                    p{
+                        padding-top: 6px;
+                    }
+                    }
+                }
+            }
+        }
+        .or{
+            text-align: center;
+            margin: 20px 0px;
+        }
+        .inp{
+            .form{
+                mat-form-field{
+                    width: 100%;
+                    input{
+                        display: block;
+                        font-size: 14px;
+                        line-height: 1.42857143;
+                        color: #555;
+                        background-color: #fff;
+                    }
+                }
+            }
+        }
+        .text{
+            margin-top: 20px;
+            .check-si{
+                margin-top: 20px;
+                .btn{
+                    float: right;
+                    color: #5496ff;
+                }
+            }
+        }
+    }
+}
