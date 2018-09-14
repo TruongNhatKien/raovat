@@ -1,0 +1,28 @@
+<app-header></app-header>
+<form>
+  <div class="form-group">
+    <select id="where">
+      <option>Toàn Quốc</option>
+      <option>Hà Nội</option>
+      <option>Hồ Chí Minh</option>
+      <option>Đà Nẵng</option>
+    </select>
+    <input class="form-control" id="name" placeholder="Nhập tên sản phẩm cần đăng tin" type="text" required>
+    <input class="form-control" id="price" placeholder="Giá" type="number" min="0" required>
+    <textarea class="form-control" id="info" placeholder="Thông tin sản phẩm " rows="5"></textarea>
+    <div class="x_content">
+      <input type="file" id="fileUploadInput" accept="images/*" (change)="fileChange($event)" />
+      <div id="uploader">
+        <i class="fa fa-picture-o"></i> {{uploadResult.uploadingText}}
+      </div>
+      <!-- <div class="progress progress-striped" *ngIf="uploadResult.progress > 0">
+        <div class="progress-bar progress-bar-success" [ngStyle]="{'width':  uploadResult.progress+'%'}">{{uploadResult.progress}}%</div>
+      </div> -->
+      <img *ngIf="uploadResult.fileUrl" src="{{uploadResult.fileUrl}}" style="width:100%;">
+    </div>
+  </div>
+  <button class="post">Đăng tin</button>
+</form>
+<div class="foot">
+  <app-footer></app-footer>
+</div>
