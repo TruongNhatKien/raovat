@@ -16,4 +16,14 @@ export class AuthService {
       }, 500);
     });
   }
+
+  public register() {
+    return new Observable((subscriber) => {
+      setTimeout(() => {
+        this.isLogged = true;
+        subscriber.next(this.isLogged);
+        subscriber.complete();
+      });
+    });
+  }
 }

@@ -2,10 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule, MatFormFieldModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule, Routes, RouterLink } from '@angular/router';
@@ -26,6 +25,7 @@ import { PublishedComponent } from './published/published.component';
 import { SelledComponent } from './selled/selled.component';
 import { PostComponent } from './post/post.component';
 import { SeachComponent } from './seach/seach.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -50,14 +50,15 @@ import { SeachComponent } from './seach/seach.component';
   exports: [RouterModule],
   imports: [
     BrowserModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes),
     FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },

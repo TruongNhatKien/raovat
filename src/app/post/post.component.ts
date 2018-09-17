@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { HttpService } from '../providers/http.service';
+import { log } from 'util';
+
 
 @Component({
   selector: 'app-post',
@@ -7,44 +9,53 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  uploadingText = 'Chọn ảnh (chỉ chấp nhận file ảnh)';
-  uploadResult: any = {
-    progress: 0,
-    uploadingText: this.uploadingText,
-    fileUrl: null
-  }
-  constructor(private title: Title) { }
+  imageUrl: string = "./assets/default.jpg";
+  fileToUpload: File = null;
+
+  namePr: string = '';
+  pricePr: string = '';
+  infoPr: string = '';
+  addrPr: string = '';
+
+  constructor(
+    private httpService: HttpService,
+  ) { }
+
   ngOnInit() {
   }
 
-  fileChange(event) {
-    let fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      let file: File = fileList[0];
-      let formData: FormData = new FormData();
-      formData.append('uploadFile', file);
-      let xhr: XMLHttpRequest = new XMLHttpRequest();
-      xhr.withCredentials = false;
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            let json = JSON.parse(xhr.response);
-            let fileUrl = 'http://minhquandalat.com/uploads/' + json.Name;
-            this.uploadResult.progress = 100;
-            this.uploadResult.fileUrl = fileUrl;
-            this.uploadResult.uploadingText = "Hoàn thành";
-
-          } else {
-          }
-        }
+  postIfPr() {
+    if (this.namePr.length !== 0 && this.addrPr.length !== 0 && this.pricePr.length !== 0 && this.infoPr.length !== 0) {
+      const postIf: any = {
+        name: this.namePr,
+        price: this.pricePr,
+        info: this.infoPr,
+        addr: this.addrPr,
       };
-      xhr.upload.onprogress = (event) => {
-        this.uploadResult.uploadingText = "Đang tải ảnh lên...";
-        let percentVal = Math.round(event.loaded / event.total * 100);
-        this.uploadResult.progress = percentVal;
-      };
-      xhr.open('POST', "http://minhquandalat.com/api/FileUpload", true);
-      xhr.send(formData);
+      this.httpService.postIfPr(postIf).subscribe(data => {
+        // this.fileStore.loadDataIfNeed();
+      });
+      this.namePr = '';
+      this.pricePr = '';
+      this.infoPr = '';
+      this.addrPr = '';
+    } else if (this.namePr.length === 0 || this.infoPr.length === 0 || this.pricePr.length === 0 ||this.addrPr.length === 0) {
+      const checkAdd = confirm('Data is empty! Do you want exit?');
     }
+  }
+
+  handleFileInput(file: FileList) {
+    this.fileToUpload = file.item(0);
+
+    //Show image preview
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
+  selectChangeHandler (event: any) {
+    this.addrPr = event.target.value;
   }
 }

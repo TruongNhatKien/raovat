@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../providers/auth.service';
 
 
 
@@ -35,12 +36,38 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
     this.buildForm();
-
   }
+
+  isCheckbox() {
+    if (this.checkbox === true) {
+      this.checkbox = false;
+    } else {
+      this.checkbox = true;
+    }
+    console.log(this.checkbox);
+  }
+
+
+  public register() {
+    if (this.checkbox === true) {
+      this.authService.register().subscribe(
+        () => {
+          // dang ki thanhcong
+          // console.log(resp);
+          this.router.navigate(['/login']);
+        },
+        (err) => {
+          //
+        }
+      );
+    }
+  }
+
 
   private buildForm() {
     this.registerForm = this.formBuilder.group({

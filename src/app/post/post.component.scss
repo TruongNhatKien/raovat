@@ -7,10 +7,17 @@
         #where{
             padding: 5px;
         }
-    }
-    .post{
-        position: absolute;
-        right: 50%;
+        .post{
+            position: absolute;
+            right: 50%;
+        }
+        .uploadimg{
+            img{
+                width: 250px;
+                height: 200px;
+                border: 1px solid #c1c1c1c1;
+            }
+        }
     }
    }
    .foot{

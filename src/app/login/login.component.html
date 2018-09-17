@@ -65,7 +65,7 @@
       <br>
       <div class="check-si">
         <input type="checkbox"> Ghi nhớ tài khoản
-        <button mat-button class="btn" (click)="login()">Đăng nhập</button>
+        <button mat-button class="btn" (click)="login(email.value, pass.value)" [disabled]="!loginForm.valid">Đăng nhập</button>
       </div>
       <br>
       <a class="forgot" (click)="forgot()">Quên mật khẩu</a>

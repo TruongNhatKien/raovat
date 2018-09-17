@@ -14,16 +14,16 @@ import { SeachComponent } from './seach/seach.component';
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {
-    path: '',
-    // canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'ads',
-        component: SellComponent
-      },
-    ]
-  },
+  // {
+  //   path: '',
+  //   // canActivate: [AuthGuard],
+  //   children: [
+  //     {
+  //       path: 'ads',
+  //       component: SellComponent
+  //     },
+  //   ]
+  // },
   {
     path: '',
     // canActivate: [AuthGuard],
@@ -54,6 +54,7 @@ export const appRoutes: Routes = [
   {
     path: '',
     component: SellComponent,
+    // canActivate: [AuthGuard],
     children: [
       { path: 'published', component: PublishedComponent },
       { path: 'selled', component: SelledComponent },
