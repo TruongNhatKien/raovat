@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../providers/auth.service';
+import { User } from '../interfaces/User';
 
 
 @Component({
@@ -13,11 +14,10 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService, 
+    private authService: AuthService,
 
   ) { }
 
@@ -25,9 +25,14 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  public login() {
+  public login(email, pass) {
     this.authService.login().subscribe(
       (resp) => {
+        let user: User = {
+          email: email,
+          pass: pass
+        };
+        localStorage.setItem('user', JSON.stringify(user));
         // dang nhap thanhcong
         this.router.navigate(['/home']);
       },

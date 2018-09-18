@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../interfaces/User';
 
 
 @Component({
@@ -9,19 +10,22 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  public local = false;
+  user: User;
+  username = '';
   constructor(
     private router: Router,
   ) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this.user = JSON.parse(localStorage.getItem('user'));
+      this.local = true;
+      this.username = this.user.email;
+    }
   }
-
-  login(){
-    this.router.navigate(['/login']);
+  SignOut() {
+    localStorage.clear();
+    location.reload();
   }
-
-  register(){
-    this.router.navigate(['/register']);
-  }
-
 }

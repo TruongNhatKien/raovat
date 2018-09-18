@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  public local = true;
 
   constructor() { }
 
   ngOnInit() {
+    if(localStorage.getItem('user')){
+      this.local = false;
+    }
   }
 
 }

@@ -29,13 +29,13 @@
   </div>
   <div class="header-right">
     <div class="dropdown">
-      <span class="dropdown-toggle" data-toggle="dropdown">
+      <span *ngIf="local"  class="dropdown-toggle" data-toggle="dropdown">
         <img alt="Account photo" src="https://cfl.dropboxstatic.com/static/images/avatar/faceholder-32-vflKWtuU5.png">
       </span>
       <ul class="dropdown-menu">
         <li>
           <p>Hello:</p>
-          {{user}}
+          {{username}}
         </li>
         <li>
           <hr>
