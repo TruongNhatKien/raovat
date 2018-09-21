@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/User';
-
+import { LogoutConfirmComponent } from './logout-confirm';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   username = '';
   constructor(
     private router: Router,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,17 @@ export class HeaderComponent implements OnInit {
     }
   }
   SignOut() {
-    localStorage.clear();
-    location.reload();
+    let dialogRef = this.dialog.open(LogoutConfirmComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe((isConfirm) => {
+      if (isConfirm) {
+        // logout
+        this.router.navigate(['/login']);
+        localStorage.clear();
+        location.reload();
+      }
+    });
   }
 }

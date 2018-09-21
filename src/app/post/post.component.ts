@@ -9,6 +9,7 @@ import { log } from 'util';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
+
   imageUrl: string = "./assets/default.jpg";
   fileToUpload: File = null;
 
@@ -22,6 +23,7 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.imageUrl;
   }
 
   postIfPr() {

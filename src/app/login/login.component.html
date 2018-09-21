@@ -1,21 +1,6 @@
 <form [formGroup]="loginForm">
   <div class="title">
     <div class="title-si">Đăng nhập</div>
-    <div class="choise">or
-      <a routerLink="/register">Đăng kí tài khoản</a>
-    </div>
-    <br>
-    <div class="sign-in">
-      <div class="btn">
-        <button>
-          <a href="#">
-            <span>G</span>
-            <p>Đăng nhập bằng Google</p>
-          </a>
-        </button>
-      </div>
-    </div>
-    <div class="or">or</div>
     <div class="inp">
       <div class="form">
         <mat-form-field>
@@ -65,10 +50,13 @@
       <br>
       <div class="check-si">
         <input type="checkbox"> Ghi nhớ tài khoản
-        <button mat-button class="btn" (click)="login(email.value, pass.value)" [disabled]="!loginForm.valid">Đăng nhập</button>
       </div>
       <br>
-      <a class="forgot" (click)="forgot()">Quên mật khẩu</a>
+      <a (click)="forgot()">Quên mật khẩu</a>
+      <br>
+      <a routerLink="/register">Bạn chưa có tài khoản?</a>
+      <button mat-button class="btn" (click)="login(email.value, pass.value)" [disabled]="!loginForm.valid">Đăng nhập</button>
     </div>
   </div>
 </form>
+

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule, MatFormFieldModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,6 +26,7 @@ import { SelledComponent } from './selled/selled.component';
 import { PostComponent } from './post/post.component';
 import { SeachComponent } from './seach/seach.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LogoutConfirmComponent } from './header/logout-confirm';
 
 
 @NgModule({
@@ -45,20 +46,22 @@ import { HttpClientModule } from '@angular/common/http';
     SelledComponent,
     PostComponent,
     SeachComponent,
+    LogoutConfirmComponent
   ],
-  
+
   exports: [RouterModule],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
@@ -67,6 +70,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   bootstrap: [
     AppComponent,
-]
+  ],
+  entryComponents: [LogoutConfirmComponent]
 })
 export class AppModule { }

@@ -1,15 +1,11 @@
 <form [formGroup]="registerForm">
     <div class="title">
-        <div class="title-si">Đăng kí tài khoản</div>
-        <div class="choise">or
-            <a routerLink="/login" >Đăng nhập</a>
-        </div>
-        <br>
-
+        <div class="title-si">Đăng Kí</div>
         <div class="inp">
             <div class="form">
                 <mat-form-field>
-                    <input matInput type="text" id="firstname" class="firstname" placeholder="First name" formControlName="firstname" required>
+                    <input matInput type="text" id="firstname" class="firstname" placeholder="First name"
+                        formControlName="firstname" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.firstname.invalid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)"
                     class="alert alert-danger">
@@ -27,7 +23,8 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput type="text" id="lastname" class="lastname" placeholder="Last name" formControlName="lastname" required>
+                    <input matInput type="text" id="lastname" class="lastname" placeholder="Last name" formControlName="lastname"
+                        required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.lastname.invalid && (registerForm.controls.lastname.dirty || registerForm.controls.lastname.touched)"
                     class="alert alert-danger">
@@ -45,7 +42,8 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput type="email" id="email" class=email placeholder="Email" formControlName="email" required>
+                    <input matInput type="email" id="email" class=email placeholder="Email" formControlName="email"
+                        required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)"
                     class="alert alert-danger">
@@ -66,8 +64,8 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput #password type="password" id="password" class="password" placeholder="Password" formControlName="password"
-                        required>
+                    <input matInput #password type="password" id="password" class="password" placeholder="Password"
+                        formControlName="password" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)"
                     class="alert alert-danger">
@@ -88,8 +86,8 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput #passwordconfirm type="password" id="passwordConfirm" class="Password Confirm" placeholder="Password Confirm"
-                        formControlName="passwordConfirm" required>
+                    <input matInput #passwordconfirm type="password" id="passwordConfirm" class="Password Confirm"
+                        placeholder="Password Confirm" formControlName="passwordConfirm" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.passwordConfirm.invalid && (registerForm.controls.passwordConfirm.dirty || registerForm.controls.passwordConfirm.touched)"
                     class="alert alert-danger">
@@ -118,19 +116,9 @@
             <div class="check-si">
                 <input type="checkbox" (click)="isCheckbox()"> Tôi đồng ý với điều khoản của
                 <a>Matket CK</a>
+                <br>
+                <a routerLink="/login">Bạn đã có tài khoản?</a>
                 <button mat-button class="btn" (click)="register()">Đăng kí</button>
-            </div>
-            <br>
-            <div class="or ">or</div>
-        </div>
-        <div class="log-in ">
-            <div class="btn ">
-                <button>
-                    <a href="# ">
-                        <span>G</span>
-                        <p>Đăng nhập bằng Google</p>
-                    </a>
-                </button>
             </div>
         </div>
     </div>
