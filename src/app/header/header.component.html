@@ -9,16 +9,19 @@
 
     <div class="header-center">
       <div class="center">
-        <a routerLink="/search"><img src="https://static.chotot.com.vn/storage/marketplace/common/searchActive.svg">Tìm rao vặt</a>
+        <a routerLink="/search"><img src="https://static.chotot.com.vn/storage/marketplace/common/searchActive.svg">Tìm
+          rao vặt</a>
       </div>
 
       <div class="center">
-        <a routerLink="/published"><img src="https://static.chotot.com.vn/storage/marketplace/common/userActive.svg"> Tôi bán</a>
+        <a routerLink="/published"><img src="https://static.chotot.com.vn/storage/marketplace/common/userActive.svg">
+          Tôi bán</a>
       </div>
 
       <div class="center">
         <a>
-          <img src="https://static.chotot.com.vn/storage/marketplace/common/notificationActive.svg" alt="notify"> Thông báo</a>
+          <img src="https://static.chotot.com.vn/storage/marketplace/common/notificationActive.svg" alt="notify"> Thông
+          báo</a>
       </div>
 
       <div class="center">
@@ -29,14 +32,17 @@
   </div>
   <div class="header-right">
     <div class="dropdown">
-      <span *ngIf="local"  class="dropdown-toggle" data-toggle="dropdown">
+      <span *ngIf="local" class="dropdown-toggle" data-toggle="dropdown">
         <img alt="Account photo" src="https://cfl.dropboxstatic.com/static/images/avatar/faceholder-32-vflKWtuU5.png">
       </span>
       <ul class="dropdown-menu">
         <li>
-          <p>Hello:</p>
-          {{username}}
+          Xin chào: {{username}}
         </li>
+        <li>
+          <hr>
+        </li>
+        <li><a (click)="infoUser()">Thông tin cá nhân</a></li>
         <li>
           <hr>
         </li>
@@ -45,5 +51,5 @@
         </li>
       </ul>
     </div>
-  </div> 
+  </div>
 </nav>

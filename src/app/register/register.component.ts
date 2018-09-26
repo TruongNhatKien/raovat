@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../providers/auth.service';
+import { HttpService } from '../providers/http.service';
 
 
 
@@ -22,6 +23,11 @@ export class RegisterComponent implements OnInit {
     passwordConfirm: '',
   };
 
+  firstnameRe: string = '';
+  lastnameRe: string = '';
+  emailRe: string = '';
+  passwordRe: string = '';
+
   public passwordcf(c: AbstractControl): any {
     if (!c.parent || !c) { return; }
     const pw = c.parent.get('password');
@@ -37,6 +43,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private httpService: HttpService,
   ) { }
 
   ngOnInit() {
@@ -57,8 +64,18 @@ export class RegisterComponent implements OnInit {
     if (this.checkbox === true) {
       this.authService.register().subscribe(
         () => {
+          const regis: any = {
+            name: this.firstnameRe + ' ' + this.lastnameRe,
+            email: this.emailRe,
+            pass: this.passwordRe,
+          };
+          this.httpService.reGis(regis).subscribe(data => {
+          });
+          this.lastnameRe = '';
+          this.firstnameRe = '';
+          this.emailRe = '';
+          this.passwordRe = '';
           // dang ki thanhcong
-          // console.log(resp);
           this.router.navigate(['/login']);
         },
         (err) => {

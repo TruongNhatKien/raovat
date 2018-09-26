@@ -5,7 +5,7 @@
             <div class="form">
                 <mat-form-field>
                     <input matInput type="text" id="firstname" class="firstname" placeholder="First name"
-                        formControlName="firstname" required>
+                        formControlName="firstname" [(ngModel)]="firstnameRe" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.firstname.invalid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)"
                     class="alert alert-danger">
@@ -23,8 +23,7 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput type="text" id="lastname" class="lastname" placeholder="Last name" formControlName="lastname"
-                        required>
+                    <input matInput type="text" id="lastname" class="lastname" placeholder="Last name" formControlName="lastname" [(ngModel)]="lastnameRe" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.lastname.invalid && (registerForm.controls.lastname.dirty || registerForm.controls.lastname.touched)"
                     class="alert alert-danger">
@@ -42,8 +41,7 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput type="email" id="email" class=email placeholder="Email" formControlName="email"
-                        required>
+                    <input matInput type="email" id="email" class=email placeholder="Email" formControlName="email" [(ngModel)]="emailRe" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)"
                     class="alert alert-danger">
@@ -64,8 +62,7 @@
             <br>
             <div class="form">
                 <mat-form-field>
-                    <input matInput #password type="password" id="password" class="password" placeholder="Password"
-                        formControlName="password" required>
+                    <input matInput #password type="password" id="password" class="password" placeholder="Password" formControlName="password" [(ngModel)]="passwordRe" required>
                 </mat-form-field>
                 <div *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)"
                     class="alert alert-danger">

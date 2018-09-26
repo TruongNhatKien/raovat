@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../providers/http.service';
 import { log } from 'util';
+import { DISABLED } from '@angular/forms/src/model';
+import { disableDebugTools } from '@angular/platform-browser';
 
 
 @Component({
@@ -40,7 +42,6 @@ export class PostComponent implements OnInit {
       this.namePr = '';
       this.pricePr = '';
       this.infoPr = '';
-      this.addrPr = '';
     } else if (this.namePr.length === 0 || this.infoPr.length === 0 || this.pricePr.length === 0 ||this.addrPr.length === 0) {
       const checkAdd = confirm('Data is empty! Do you want exit?');
     }

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, Ng
 import { Router } from '@angular/router';
 import { AuthService } from '../providers/auth.service';
 import { User } from '../interfaces/User';
+import { HttpService } from '../providers/http.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-
+    private httpService: HttpService
   ) { }
 
   ngOnInit() {
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
           email: email,
           pass: pass
         };
+        this.httpService.loGIn(user).subscribe(data => {
+        });
         localStorage.setItem('user', JSON.stringify(user));
         // dang nhap thanhcong
         this.router.navigate(['/home']);
